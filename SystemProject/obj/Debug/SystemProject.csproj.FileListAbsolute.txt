@@ -1,0 +1,10 @@
+C:\Users\RONAL\Desktop\programming\ERPProject\SystemProject\bin\Debug\SystemProject.exe.config
+C:\Users\RONAL\Desktop\programming\ERPProject\SystemProject\bin\Debug\SystemProject.exe
+C:\Users\RONAL\Desktop\programming\ERPProject\SystemProject\bin\Debug\SystemProject.pdb
+C:\Users\RONAL\Desktop\programming\ERPProject\SystemProject\obj\Debug\SystemProject.csproj.AssemblyReference.cache
+C:\Users\RONAL\Desktop\programming\ERPProject\SystemProject\obj\Debug\SystemProject.MainFrm.resources
+C:\Users\RONAL\Desktop\programming\ERPProject\SystemProject\obj\Debug\SystemProject.Properties.Resources.resources
+C:\Users\RONAL\Desktop\programming\ERPProject\SystemProject\obj\Debug\SystemProject.csproj.GenerateResource.cache
+C:\Users\RONAL\Desktop\programming\ERPProject\SystemProject\obj\Debug\SystemProject.csproj.CoreCompileInputs.cache
+C:\Users\RONAL\Desktop\programming\ERPProject\SystemProject\obj\Debug\SystemProject.exe
+C:\Users\RONAL\Desktop\programming\ERPProject\SystemProject\obj\Debug\SystemProject.pdb

@@ -12,6 +12,9 @@ namespace SystemProject
 {
     public partial class MainFrm : Form
     {
+        //Instanciating Connection class
+        Connection con = new Connection();
+
         public MainFrm()
         {
             InitializeComponent();
@@ -42,6 +45,9 @@ namespace SystemProject
             disableLabel();
             disableButton();
             btnNew.Enabled = true;
+
+            con.OpenConnection();
+
         }
 
         private void btnDelete_Click(object sender, EventArgs e)

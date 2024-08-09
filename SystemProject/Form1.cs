@@ -1,7 +1,9 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -14,7 +16,8 @@ namespace SystemProject
     {
         //Instanciating Connection class
         Connection con = new Connection();
-
+        String sqlText;
+        MySqlCommand cmd;
         public MainFrm()
         {
             InitializeComponent();
@@ -41,13 +44,28 @@ namespace SystemProject
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            
+
+            //Open connection with DataBase
+            con.OpenConnection();
+            //CRUD
+            //Create - Read - Update - Delete
+            //sqlText is the string that will be used into MySqlDatabase query, in this case to insert data
+            sqlText = "INSERT INTO client (name, adress, cpf, phone) VALUES (@name, @adress, @cpf, @phone)";
+            //Instanciate cmd as a new MySqlCommand object, that is responsable for executing commands such SQL query against MySqlDatabase
+            //The con.con parameter is the connection instancied into Connection class
+            cmd = new MySqlCommand(sqlText, con.con);
+            cmd.Parameters.AddWithValue("@name", txtName.Text);
+            cmd.Parameters.AddWithValue("@adress", txtAdress.Text);
+            cmd.Parameters.AddWithValue("@cpf", txtCpf.Text);
+            cmd.Parameters.AddWithValue("@phone", txtPhone.Text);
+            cmd.ExecuteNonQuery();
+            con.CloseConnection();
+
             clearFields();
             disableLabel();
             disableButton();
             btnNew.Enabled = true;
-
-            con.OpenConnection();
-
         }
 
         private void btnDelete_Click(object sender, EventArgs e)

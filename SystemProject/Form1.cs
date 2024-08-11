@@ -6,6 +6,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -44,7 +45,20 @@ namespace SystemProject
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            
+            if(txtName.Text.Trim() == "")
+            {
+                MessageBox.Show("Input the name.");
+                txtName.Text = "";
+                txtName.Focus();
+                return;
+            }
+
+            if(txtCpf.Text == "   ,   ,   -" || txtCpf.Text.Length != 14)
+            {
+                MessageBox.Show("CPF incorrect.");
+                txtCpf.Text = "";
+                return;
+            }
 
             //Open connection with DataBase
             con.OpenConnection();
@@ -57,7 +71,7 @@ namespace SystemProject
             cmd = new MySqlCommand(sqlText, con.con);
             cmd.Parameters.AddWithValue("@name", txtName.Text);
             cmd.Parameters.AddWithValue("@adress", txtAdress.Text);
-            cmd.Parameters.AddWithValue("@cpf", txtCpf.Text);
+            cmd.Parameters.AddWithValue("@cpf", txtCpf.Text.Replace(',','.'));
             cmd.Parameters.AddWithValue("@phone", txtPhone.Text);
             cmd.ExecuteNonQuery();
             con.CloseConnection();
@@ -123,6 +137,26 @@ namespace SystemProject
             txtName.Enabled = false;
             txtCpf.Enabled = false;
             txtAdress.Enabled = false;
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            con.OpenConnection();
+            sqlText = "UPDATE client SET name=@name, adress=@adress, cpf=@cpf, phone=@phone";
+            cmd = new MySqlCommand(sqlText, con.con);
+            cmd.Parameters.AddWithValue("@name", txtName.Text);
+            cmd.Parameters.AddWithValue("@adress", txtAdress.Text);
+
         }
     }
 }

@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -23,45 +24,13 @@ namespace SystemProject
 
         String id;
 
+        String photo;
+
         public MainFrm()
         {
             InitializeComponent();
         }
         #endregion
-
-        private void FormatGrid()
-        {
-            dataGridView1.Columns[0].HeaderText = "ID";
-            dataGridView1.Columns[1].HeaderText = "Name";
-            dataGridView1.Columns[2].HeaderText = "Adress";
-            dataGridView1.Columns[3].HeaderText = "Cpf";
-            dataGridView1.Columns[4].HeaderText = "Phone";
-
-            dataGridView1.Columns[0].Visible = false;
-        }
-
-        private void ListGrid()
-        {
-            //Open connection
-            con.OpenConnection();
-            //SQL Command to select all data ordering acendently by name
-            String sqlText = "SELECT * FROM client ORDER BY NAME ASC";
-            //cmd = new MySqlCommand(sqlText, con.con);
-            //Command to adapt DS content to the grid
-            //MySqlDataAdapter da = new MySqlDataAdapter(cmd);
-            //da.SelectCommand = cmd;
-            DataTable dt = new DataTable();
-            //da.Fill(dt);
-            dataGridView1.DataSource = dt;
-
-            MySqlDataAdapter da = new MySqlDataAdapter(sqlText, con.con);
-            da.Fill(dt);
-            dataGridView1.DataSource = dt;
-
-            con.CloseConnection();
-
-            FormatGrid();
-        }
 
         #region Initialization
         private void MainFrm_Load_1(object sender, EventArgs e)
@@ -70,10 +39,11 @@ namespace SystemProject
         }
         #endregion
 
+        #region Buttons action
         private void btnNew_Click(object sender, EventArgs e)
         {
             //I setted the text boxt to enable false in the inicialization
-            //when click in new, al the boxes become acessible
+            //when click in new, all the boxes become acessible
             enableLabel();
             //and their content become void
             clearFields();
@@ -82,6 +52,7 @@ namespace SystemProject
             //and enable all buttons
             enableButton();
             btnNew.Enabled = false;
+            btnDelete.Enabled = false;
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -106,7 +77,7 @@ namespace SystemProject
             //CRUD
             //Create - Read - Update - Delete
             //sqlText is the string that will be used into MySqlDatabase query, in this case to insert data
-            sqlText = "INSERT INTO client (name, adress, cpf, phone) VALUES (@name, @adress, @cpf, @phone)";
+            sqlText = "INSERT INTO client (name, adress, cpf, phone, photo) VALUES (@name, @adress, @cpf, @phone, @image)";
             //Instanciate cmd as a new MySqlCommand object, that is responsable for executing commands such SQL query against MySqlDatabase
             //The con.con parameter is the connection instancied into Connection class
             cmd = new MySqlCommand(sqlText, con.con);
@@ -114,6 +85,8 @@ namespace SystemProject
             cmd.Parameters.AddWithValue("@adress", txtAdress.Text);
             cmd.Parameters.AddWithValue("@cpf", txtCpf.Text.Replace(',','.'));
             cmd.Parameters.AddWithValue("@phone", txtPhone.Text);
+            //Need to create a method "img" to send a image to DB
+            cmd.Parameters.AddWithValue("@image", img());
             cmd.ExecuteNonQuery();
             con.CloseConnection();
 
@@ -126,78 +99,6 @@ namespace SystemProject
             ListGrid();
             //
             MessageBox.Show("Register saved sucessifully", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
-
-        private void btnDelete_Click(object sender, EventArgs e)
-        {
-            clearFields();
-            disableLabel();
-            disableButton();
-            btnNew.Enabled = true;
-            //Update the Gris visualization
-            ListGrid();
-            MessageBox.Show("Register deleted sucessifully");
-        }
-
-        private void btnCancel_Click(object sender, EventArgs e)
-        {
-            clearFields();
-            disableButton();
-            disableLabel();
-            btnNew.Enabled = true;
-        }
-
-        //Method to desable buttons don't need signature
-        private void disableButton()
-        {
-            btnNew.Enabled = false;
-            btnSave.Enabled = false;
-            btnUpdate.Enabled = false;
-            btnDelete.Enabled = false;
-            btnCancel.Enabled = false;
-        }
-
-        private void enableButton()
-        {
-            btnNew.Enabled = true;
-            btnSave.Enabled = true;
-            btnUpdate.Enabled = true;
-            btnDelete.Enabled = true;
-            btnCancel.Enabled = true;
-        }
-
-        private void clearFields()
-        {
-            txtName.Text = "";
-            txtAdress.Text = "";
-            txtCpf.Text = "";
-            txtPhone.Text = "";
-        }
-
-        private void enableLabel()
-        {
-            txtPhone.Enabled = true;
-            txtName.Enabled = true;
-            txtCpf.Enabled = true;
-            txtAdress.Enabled = true;
-        }
-
-        private void disableLabel()
-        {
-            txtPhone.Enabled = false;
-            txtName.Enabled = false;
-            txtCpf.Enabled = false;
-            txtAdress.Enabled = false;
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
@@ -238,6 +139,123 @@ namespace SystemProject
             MessageBox.Show("Register updated sucessifully", "Updated", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            //Var is used to get int the format of the input
+            var ans = MessageBox.Show("You really want to delete this register?", "Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (ans == DialogResult.Yes)
+            {
+                con.OpenConnection();
+                sqlText = "DELETE FROM client WHERE id=@id";
+                cmd = new MySqlCommand(sqlText, con.con);
+                cmd.Parameters.AddWithValue("@id", id);
+                cmd.ExecuteNonQuery();
+                con.CloseConnection();
+
+                clearFields();
+                disableLabel();
+                disableButton();
+                btnNew.Enabled = true;
+
+                ListGrid();
+                MessageBox.Show("Register deleted Sucessifully!", "Deleted", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            clearFields();
+            disableButton();
+            disableLabel();
+            btnNew.Enabled = true;
+        }
+        #endregion
+
+        #region Enable/disable/clear region
+        //Method to desable buttons don't need signature
+        private void disableButton()
+        {
+            btnNew.Enabled = false;
+            btnSave.Enabled = false;
+            btnUpdate.Enabled = false;
+            btnDelete.Enabled = false;
+            btnCancel.Enabled = false;
+        }
+
+        private void enableButton()
+        {
+            btnNew.Enabled = true;
+            btnSave.Enabled = true;
+            btnUpdate.Enabled = true;
+            btnDelete.Enabled = true;
+            btnCancel.Enabled = true;
+        }
+
+        private void clearFields()
+        {
+            txtName.Text = "";
+            txtAdress.Text = "";
+            txtCpf.Text = "";
+            txtPhone.Text = "";
+            txtSearch.Text = "";
+        }
+
+        private void enableLabel()
+        {
+            txtPhone.Enabled = true;
+            txtName.Enabled = true;
+            txtCpf.Enabled = true;
+            txtAdress.Enabled = true;
+            txtSearch.Enabled = true;
+        }
+
+        private void disableLabel()
+        {
+            txtPhone.Enabled = false;
+            txtName.Enabled = false;
+            txtCpf.Enabled = false;
+            txtAdress.Enabled = false;
+            txtSearch.Enabled = false;
+        }
+        #endregion
+
+        #region Grid region
+        private void FormatGrid()
+        {
+            dataGridView1.Columns[0].HeaderText = "ID";
+            dataGridView1.Columns[1].HeaderText = "Name";
+            dataGridView1.Columns[2].HeaderText = "Adress";
+            dataGridView1.Columns[3].HeaderText = "Cpf";
+            dataGridView1.Columns[4].HeaderText = "Phone";
+            dataGridView1.Columns[5].HeaderText = "Photo";
+
+            dataGridView1.Columns[0].Visible = false;
+            dataGridView1.Columns[5].Visible = false;
+        }
+        private void ListGrid()
+        {
+            //Open connection
+            con.OpenConnection();
+            //SQL Command to select all data ordering acendently by name
+            String sqlText = "SELECT * FROM client ORDER BY NAME ASC";
+            //cmd = new MySqlCommand(sqlText, con.con);
+            //Command to adapt DS content to the grid
+            //MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+            //da.SelectCommand = cmd;
+            DataTable dt = new DataTable();
+            //da.Fill(dt);
+            dataGridView1.DataSource = dt;
+
+            MySqlDataAdapter da = new MySqlDataAdapter(sqlText, con.con);
+            da.Fill(dt);
+            dataGridView1.DataSource = dt;
+
+            con.CloseConnection();
+
+            FormatGrid();
+        }
+
         private void dataGridView1_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             enableButton();
@@ -252,6 +270,67 @@ namespace SystemProject
             txtCpf.Text = dataGridView1.CurrentRow.Cells[3].Value.ToString();
             txtPhone.Text = dataGridView1.CurrentRow.Cells[4].Value.ToString();
 
+        }
+        #endregion
+
+        private void NameSearch()
+        {
+            con.OpenConnection();
+            sqlText = "SELECT * FROM client WHERE name LIKE @name ORDER BY name asc";
+            cmd = new MySqlCommand(sqlText, con.con);
+            //This '%' is a Like operator, that searches by aproximation
+            cmd.Parameters.AddWithValue("@name", "%" + txtSearch.Text + "%");
+
+            MySqlDataAdapter da = new MySqlDataAdapter();
+            da.SelectCommand = cmd;
+            DataTable dt = new DataTable();
+            //While MySqlAdapter is a object used to retrieve and adapt the DB content,
+            //the command fill send these content to a dataTable adapted to the .net environment
+            da.Fill(dt);
+            dataGridView1.DataSource = dt;
+            con.CloseConnection();
+
+            FormatGrid();
+        }
+
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            NameSearch();
+        }
+
+        private void btnImg_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog of = new OpenFileDialog();
+            of.Filter = "Image(*.jpg; *.png) | *.jpg; *.png";
+            if (of.ShowDialog() == DialogResult.OK)
+            {
+                //Get the file path
+                photo = of.FileName.ToString();
+                image.ImageLocation = photo;
+            }
+        }
+
+        private byte[] img()
+        {
+            byte[] image_byte = null;
+
+            if (photo == "") 
+            {
+                return null;
+            }
+
+            FileStream fs = new FileStream(photo, FileMode.Open, FileAccess.Read);
+
+            BinaryReader br = new BinaryReader(fs);
+
+            image_byte = br.ReadBytes((int)fs.Length);
+
+            return image_byte;
+        }
+
+        private void clearImage()
+        {
+            image.Image = null;
         }
     }
 }

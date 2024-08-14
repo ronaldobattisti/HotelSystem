@@ -45,10 +45,11 @@
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.lblSearch = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.image = new System.Windows.Forms.PictureBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.btnImg = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.image)).BeginInit();
             this.SuspendLayout();
             // 
             // lblName
@@ -183,12 +184,11 @@
             // 
             // txtSearch
             // 
-            this.txtSearch.Enabled = false;
             this.txtSearch.Location = new System.Drawing.Point(470, 53);
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(241, 20);
             this.txtSearch.TabIndex = 17;
-            this.txtSearch.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
             // lblSearch
             // 
@@ -198,7 +198,6 @@
             this.lblSearch.Size = new System.Drawing.Size(44, 13);
             this.lblSearch.TabIndex = 16;
             this.lblSearch.Text = "Search:";
-            this.lblSearch.Click += new System.EventHandler(this.label4_Click);
             // 
             // dataGridView1
             // 
@@ -212,13 +211,14 @@
             this.dataGridView1.TabIndex = 18;
             this.dataGridView1.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellMouseClick);
             // 
-            // pictureBox1
+            // image
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(862, 77);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(100, 101);
-            this.pictureBox1.TabIndex = 19;
-            this.pictureBox1.TabStop = false;
+            this.image.Location = new System.Drawing.Point(862, 77);
+            this.image.Name = "image";
+            this.image.Size = new System.Drawing.Size(100, 101);
+            this.image.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.image.TabIndex = 19;
+            this.image.TabStop = false;
             // 
             // label4
             // 
@@ -229,14 +229,25 @@
             this.label4.TabIndex = 20;
             this.label4.Text = "Picture:";
             // 
+            // btnImg
+            // 
+            this.btnImg.Location = new System.Drawing.Point(862, 185);
+            this.btnImg.Name = "btnImg";
+            this.btnImg.Size = new System.Drawing.Size(100, 23);
+            this.btnImg.TabIndex = 21;
+            this.btnImg.Text = "Photo";
+            this.btnImg.UseVisualStyleBackColor = true;
+            this.btnImg.Click += new System.EventHandler(this.btnImg_Click);
+            // 
             // MainFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLight;
             this.ClientSize = new System.Drawing.Size(1006, 439);
+            this.Controls.Add(this.btnImg);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.image);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.lblSearch);
@@ -258,7 +269,7 @@
             this.Text = "Main";
             this.Load += new System.EventHandler(this.MainFrm_Load_1);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.image)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -283,8 +294,9 @@
         private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.Label lblSearch;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox image;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button btnImg;
     }
 }
 

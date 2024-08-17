@@ -45,9 +45,9 @@
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.lblSearch = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.image = new System.Windows.Forms.PictureBox();
             this.label4 = new System.Windows.Forms.Label();
             this.btnImg = new System.Windows.Forms.Button();
+            this.image = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.image)).BeginInit();
             this.SuspendLayout();
@@ -211,15 +211,6 @@
             this.dataGridView1.TabIndex = 18;
             this.dataGridView1.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellMouseClick);
             // 
-            // image
-            // 
-            this.image.Location = new System.Drawing.Point(862, 77);
-            this.image.Name = "image";
-            this.image.Size = new System.Drawing.Size(100, 101);
-            this.image.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.image.TabIndex = 19;
-            this.image.TabStop = false;
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -238,6 +229,16 @@
             this.btnImg.Text = "Photo";
             this.btnImg.UseVisualStyleBackColor = true;
             this.btnImg.Click += new System.EventHandler(this.btnImg_Click);
+            // 
+            // image
+            // 
+            this.image.Image = global::SystemProject.Properties.Resources.profile;
+            this.image.Location = new System.Drawing.Point(862, 77);
+            this.image.Name = "image";
+            this.image.Size = new System.Drawing.Size(100, 101);
+            this.image.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.image.TabIndex = 19;
+            this.image.TabStop = false;
             // 
             // MainFrm
             // 

@@ -35,6 +35,7 @@ namespace SystemProject
         #region Initialization
         private void MainFrm_Load_1(object sender, EventArgs e)
         {
+            clearImage();
             ListGrid();
         }
         #endregion
@@ -53,6 +54,8 @@ namespace SystemProject
             enableButton();
             btnNew.Enabled = false;
             btnDelete.Enabled = false;
+
+            clearImage();
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -95,6 +98,7 @@ namespace SystemProject
             disableButton();
             btnNew.Enabled = true;
             //
+            clearImage();
             //Update Grid view
             ListGrid();
             //
@@ -270,6 +274,20 @@ namespace SystemProject
             txtCpf.Text = dataGridView1.CurrentRow.Cells[3].Value.ToString();
             txtPhone.Text = dataGridView1.CurrentRow.Cells[4].Value.ToString();
 
+            //get photo - if the sixth value (image) is DBNull
+            if (dataGridView1.CurrentRow.Cells[5].Value != DBNull.Value)
+            {
+                byte[] img = (byte[])dataGridView1.Rows[e.RowIndex].Cells[5].Value;
+                MemoryStream ms = new MemoryStream(img);
+
+                image.Image = System.Drawing.Image.FromStream(ms);
+
+            }
+            else
+            {
+                image.Image = Properties.Resources.profile;
+            }
+
         }
         #endregion
 
@@ -330,7 +348,8 @@ namespace SystemProject
 
         private void clearImage()
         {
-            image.Image = null;
+            image.Image = Properties.Resources.profile;
+            photo = "ft/profile.png";
         }
     }
 }

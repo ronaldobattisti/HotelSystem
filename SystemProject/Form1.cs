@@ -26,6 +26,8 @@ namespace SystemProject
 
         String photo;
 
+        string changedPic = "no";
+
         public MainFrm()
         {
             InitializeComponent();
@@ -123,13 +125,29 @@ namespace SystemProject
             }
 
             con.OpenConnection();
-            sqlText = "UPDATE client SET name=@name, adress=@adress, cpf=@cpf, phone=@phone WHERE id=@id";
-            cmd = new MySqlCommand(sqlText, con.con);
-            cmd.Parameters.AddWithValue("@id", id);
-            cmd.Parameters.AddWithValue("@name", txtName.Text);
-            cmd.Parameters.AddWithValue("@adress", txtAdress.Text);
-            cmd.Parameters.AddWithValue("@cpf", txtCpf.Text);
-            cmd.Parameters.AddWithValue("@phone", txtPhone.Text);
+            
+            if(changedPic == "yes")
+            {
+                sqlText = "UPDATE client SET name=@name, adress=@adress, cpf=@cpf, phone=@phone, photo=@photo WHERE id=@id";
+                cmd = new MySqlCommand(sqlText, con.con);
+                cmd.Parameters.AddWithValue("@id", id);
+                cmd.Parameters.AddWithValue("@name", txtName.Text);
+                cmd.Parameters.AddWithValue("@adress", txtAdress.Text);
+                cmd.Parameters.AddWithValue("@cpf", txtCpf.Text);
+                cmd.Parameters.AddWithValue("@phone", txtPhone.Text);
+                cmd.Parameters.AddWithValue("@photo", img());
+            }
+            else if (changedPic == "no")
+            {
+                sqlText = "UPDATE client SET name=@name, adress=@adress, cpf=@cpf, phone=@phone WHERE id=@id";
+                cmd = new MySqlCommand(sqlText, con.con);
+                cmd.Parameters.AddWithValue("@id", id);
+                cmd.Parameters.AddWithValue("@name", txtName.Text);
+                cmd.Parameters.AddWithValue("@adress", txtAdress.Text);
+                cmd.Parameters.AddWithValue("@cpf", txtCpf.Text);
+                cmd.Parameters.AddWithValue("@phone", txtPhone.Text);
+            }
+
             //Update grid view
             cmd.ExecuteNonQuery();
             con.CloseConnection();
@@ -137,8 +155,11 @@ namespace SystemProject
             disableLabel();
             disableButton();
             btnNew.Enabled = true;
+
             //Update Grid view
             ListGrid();
+
+            clearImage();
 
             MessageBox.Show("Register updated sucessifully", "Updated", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
@@ -173,6 +194,7 @@ namespace SystemProject
             disableButton();
             disableLabel();
             btnNew.Enabled = true;
+            changedPic = "no";
         }
         #endregion
 
@@ -262,31 +284,44 @@ namespace SystemProject
 
         private void dataGridView1_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            enableButton();
-            btnNew.Enabled = false;
-            btnSave.Enabled = false;
-            enableLabel();
-
-            //Casting to convert DataGridVie to String
-            id = dataGridView1.CurrentRow.Cells[0].Value.ToString();
-            txtName.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString();
-            txtAdress.Text = dataGridView1.CurrentRow.Cells[2].Value.ToString();
-            txtCpf.Text = dataGridView1.CurrentRow.Cells[3].Value.ToString();
-            txtPhone.Text = dataGridView1.CurrentRow.Cells[4].Value.ToString();
-
-            //get photo - if the sixth value (image) is DBNull
-            if (dataGridView1.CurrentRow.Cells[5].Value != DBNull.Value)
+            if (e.RowIndex > -1)
             {
-                byte[] img = (byte[])dataGridView1.Rows[e.RowIndex].Cells[5].Value;
-                MemoryStream ms = new MemoryStream(img);
+                clearImage();
 
-                image.Image = System.Drawing.Image.FromStream(ms);
+                changedPic = "no";
 
+                enableButton();
+                btnNew.Enabled = false;
+                btnSave.Enabled = false;
+                enableLabel();
+
+                //Casting to convert DataGridVie to String
+                id = dataGridView1.CurrentRow.Cells[0].Value.ToString();
+                txtName.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString();
+                txtAdress.Text = dataGridView1.CurrentRow.Cells[2].Value.ToString();
+                txtCpf.Text = dataGridView1.CurrentRow.Cells[3].Value.ToString();
+                txtPhone.Text = dataGridView1.CurrentRow.Cells[4].Value.ToString();
+
+                //get photo - if the sixth value (image) is DBNull
+                if (dataGridView1.CurrentRow.Cells[5].Value != DBNull.Value)
+                {
+                    byte[] img = (byte[])dataGridView1.Rows[e.RowIndex].Cells[5].Value;
+                    MemoryStream ms = new MemoryStream(img);
+
+                    image.Image = System.Drawing.Image.FromStream(ms);
+
+                }
+                else
+                {
+                    image.Image = Properties.Resources.profile;
+                }
             }
-            else
+            else 
             {
-                image.Image = Properties.Resources.profile;
+                return;
             }
+
+            
 
         }
         #endregion
@@ -325,6 +360,12 @@ namespace SystemProject
                 //Get the file path
                 photo = of.FileName.ToString();
                 image.ImageLocation = photo;
+
+                changedPic = "yes";
+            }
+            else
+            {
+                changedPic = "no";
             }
         }
 

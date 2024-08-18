@@ -28,6 +28,8 @@ namespace SystemProject
 
         string changedPic = "no";
 
+        String oldCpf = "";
+
         public MainFrm()
         {
             InitializeComponent();
@@ -92,6 +94,23 @@ namespace SystemProject
             cmd.Parameters.AddWithValue("@phone", txtPhone.Text);
             //Need to create a method "img" to send a image to DB
             cmd.Parameters.AddWithValue("@image", img());
+
+            //check if CPF exists
+            //Create a TataTable with all instances fouded identic like the input and then check if is bigger than 0
+            MySqlCommand cmdVerify = new MySqlCommand("SELECT * FROM client WHERE cpf=@cpf", con.con);
+            MySqlDataAdapter da = new MySqlDataAdapter();
+            da.SelectCommand = cmdVerify;
+            cmdVerify.Parameters.AddWithValue("@cpf", txtCpf.Text.Replace(',', '.'));
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            if(dt.Rows.Count > 0)
+            {
+                MessageBox.Show("CPF already registered", "Register", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                txtCpf.Text = "";
+                txtCpf.Focus();
+                return;
+            }
+
             cmd.ExecuteNonQuery();
             con.CloseConnection();
 
@@ -117,7 +136,7 @@ namespace SystemProject
                 return;
             }
 
-            if (txtCpf.Text == "   ,   ,   -" || txtCpf.Text.Length != 14)
+            if (txtCpf.Text == "   .   .   -" || txtCpf.Text.Length != 14)
             {
                 MessageBox.Show("CPF incorrect.");
                 txtCpf.Text = "";
@@ -146,6 +165,25 @@ namespace SystemProject
                 cmd.Parameters.AddWithValue("@adress", txtAdress.Text);
                 cmd.Parameters.AddWithValue("@cpf", txtCpf.Text);
                 cmd.Parameters.AddWithValue("@phone", txtPhone.Text);
+            }
+
+            //check if CPF exists
+            //Create a TataTable with all instances fouded identic like the input and then check if is bigger than 0
+            if(txtCpf.Text != oldCpf)
+            {
+                MySqlCommand cmdVerify = new MySqlCommand("SELECT * FROM client WHERE cpf=@cpf", con.con);
+                MySqlDataAdapter da = new MySqlDataAdapter();
+                da.SelectCommand = cmdVerify;
+                cmdVerify.Parameters.AddWithValue("@cpf", txtCpf.Text.Replace(',', '.'));
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                if (dt.Rows.Count > 0)
+                {
+                    MessageBox.Show("CPF already registered", "Register", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    txtCpf.Text = "";
+                    txtCpf.Focus();
+                    return;
+                }
             }
 
             //Update grid view
@@ -301,6 +339,8 @@ namespace SystemProject
                 txtAdress.Text = dataGridView1.CurrentRow.Cells[2].Value.ToString();
                 txtCpf.Text = dataGridView1.CurrentRow.Cells[3].Value.ToString();
                 txtPhone.Text = dataGridView1.CurrentRow.Cells[4].Value.ToString();
+
+                oldCpf = dataGridView1.CurrentRow.Cells[3].Value.ToString();
 
                 //get photo - if the sixth value (image) is DBNull
                 if (dataGridView1.CurrentRow.Cells[5].Value != DBNull.Value)

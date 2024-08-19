@@ -1,15 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Data.SqlClient;
-using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace SystemProject
@@ -21,14 +13,11 @@ namespace SystemProject
         Connection con = new Connection();
         String sqlText;
         MySqlCommand cmd;
-
         String id;
-
         String photo;
+        String err;
 
         string changedPic = "no";
-
-        String oldCpf = "";
 
         public MainFrm()
         {
@@ -64,66 +53,49 @@ namespace SystemProject
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if(txtName.Text.Trim() == "")
+            try
             {
-                MessageBox.Show("Input the name.");
-                txtName.Text = "";
-                txtName.Focus();
-                return;
-            }
+                //Person p1 = new Person(name = txtName.Text, adress = txtAdress.Text, cpf = txtCpf.Text, phone = txtPhone.Text, photo = );
+                Person person = new Person(txtName.Text, txtAdress.Text, txtCpf.Text, txtPhone.Text, img());
 
-            if(txtCpf.Text == "   ,   ,   -" || txtCpf.Text.Length != 14)
+                //Open connection with DataBase
+                con.OpenConnection();
+                //CRUD
+                //Create - Read - Update - Delete
+                //sqlText is the string that will be used into MySqlDatabase query, in this case to insert data
+                sqlText = "INSERT INTO client (name, adress, cpf, phone, photo) VALUES (@name, @adress, @cpf, @phone, @image)";
+                //Instanciate cmd as a new MySqlCommand object, that is responsable for executing commands such SQL query against MySqlDatabase
+                //The con.con parameter is the connection instancied into Connection class
+                cmd = new MySqlCommand(sqlText, con.con);
+                cmd.Parameters.AddWithValue("@name", person.Name);
+                cmd.Parameters.AddWithValue("@adress", person.Adress);
+                cmd.Parameters.AddWithValue("@cpf", person.Cpf);
+                cmd.Parameters.AddWithValue("@phone", person.Phone);
+                cmd.Parameters.AddWithValue("@image", person.Photo);
+
+                cmd.ExecuteNonQuery();
+                con.CloseConnection();
+
+                clearFields();
+                disableLabel();
+                disableButton();
+                btnNew.Enabled = true;
+                //
+                clearImage();
+                //Update Grid view
+                ListGrid();
+                //
+                MessageBox.Show("Register saved sucessifully", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex) 
             {
-                MessageBox.Show("CPF incorrect.");
+                err = ex.Message;
+            }
+            finally
+            {
+                MessageBox.Show(err);
                 txtCpf.Text = "";
-                return;
             }
-
-            //Open connection with DataBase
-            con.OpenConnection();
-            //CRUD
-            //Create - Read - Update - Delete
-            //sqlText is the string that will be used into MySqlDatabase query, in this case to insert data
-            sqlText = "INSERT INTO client (name, adress, cpf, phone, photo) VALUES (@name, @adress, @cpf, @phone, @image)";
-            //Instanciate cmd as a new MySqlCommand object, that is responsable for executing commands such SQL query against MySqlDatabase
-            //The con.con parameter is the connection instancied into Connection class
-            cmd = new MySqlCommand(sqlText, con.con);
-            cmd.Parameters.AddWithValue("@name", txtName.Text);
-            cmd.Parameters.AddWithValue("@adress", txtAdress.Text);
-            cmd.Parameters.AddWithValue("@cpf", txtCpf.Text.Replace(',','.'));
-            cmd.Parameters.AddWithValue("@phone", txtPhone.Text);
-            //Need to create a method "img" to send a image to DB
-            cmd.Parameters.AddWithValue("@image", img());
-
-            //check if CPF exists
-            //Create a TataTable with all instances fouded identic like the input and then check if is bigger than 0
-            MySqlCommand cmdVerify = new MySqlCommand("SELECT * FROM client WHERE cpf=@cpf", con.con);
-            MySqlDataAdapter da = new MySqlDataAdapter();
-            da.SelectCommand = cmdVerify;
-            cmdVerify.Parameters.AddWithValue("@cpf", txtCpf.Text.Replace(',', '.'));
-            DataTable dt = new DataTable();
-            da.Fill(dt);
-            if(dt.Rows.Count > 0)
-            {
-                MessageBox.Show("CPF already registered", "Register", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                txtCpf.Text = "";
-                txtCpf.Focus();
-                return;
-            }
-
-            cmd.ExecuteNonQuery();
-            con.CloseConnection();
-
-            clearFields();
-            disableLabel();
-            disableButton();
-            btnNew.Enabled = true;
-            //
-            clearImage();
-            //Update Grid view
-            ListGrid();
-            //
-            MessageBox.Show("Register saved sucessifully", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
@@ -169,22 +141,22 @@ namespace SystemProject
 
             //check if CPF exists
             //Create a TataTable with all instances fouded identic like the input and then check if is bigger than 0
-            if(txtCpf.Text != oldCpf)
-            {
-                MySqlCommand cmdVerify = new MySqlCommand("SELECT * FROM client WHERE cpf=@cpf", con.con);
-                MySqlDataAdapter da = new MySqlDataAdapter();
-                da.SelectCommand = cmdVerify;
-                cmdVerify.Parameters.AddWithValue("@cpf", txtCpf.Text.Replace(',', '.'));
-                DataTable dt = new DataTable();
-                da.Fill(dt);
-                if (dt.Rows.Count > 0)
-                {
-                    MessageBox.Show("CPF already registered", "Register", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                    txtCpf.Text = "";
-                    txtCpf.Focus();
-                    return;
-                }
-            }
+            //if(txtCpf.Text != oldCpf)
+            //{
+            //    MySqlCommand cmdVerify = new MySqlCommand("SELECT * FROM client WHERE cpf=@cpf", con.con);
+            //    MySqlDataAdapter da = new MySqlDataAdapter();
+            //    da.SelectCommand = cmdVerify;
+            //    cmdVerify.Parameters.AddWithValue("@cpf", txtCpf.Text.Replace(',', '.'));
+            //    DataTable dt = new DataTable();
+            //    da.Fill(dt);
+            //    if (dt.Rows.Count > 0)
+            //    {
+            //        MessageBox.Show("CPF already registered", "Register", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            //        txtCpf.Text = "";
+            //        txtCpf.Focus();
+            //        return;
+            //    }
+            //}
 
             //Update grid view
             cmd.ExecuteNonQuery();
@@ -340,7 +312,7 @@ namespace SystemProject
                 txtCpf.Text = dataGridView1.CurrentRow.Cells[3].Value.ToString();
                 txtPhone.Text = dataGridView1.CurrentRow.Cells[4].Value.ToString();
 
-                oldCpf = dataGridView1.CurrentRow.Cells[3].Value.ToString();
+                //oldCpf = dataGridView1.CurrentRow.Cells[3].Value.ToString();
 
                 //get photo - if the sixth value (image) is DBNull
                 if (dataGridView1.CurrentRow.Cells[5].Value != DBNull.Value)

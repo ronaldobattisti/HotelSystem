@@ -100,63 +100,29 @@ namespace SystemProject
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            if (txtName.Text.Trim() == "")
-            {
-                MessageBox.Show("Input the name.");
-                txtName.Text = "";
-                txtName.Focus();
-                return;
-            }
-
-            if (txtCpf.Text == "   .   .   -" || txtCpf.Text.Length != 14)
-            {
-                MessageBox.Show("CPF incorrect.");
-                txtCpf.Text = "";
-                return;
-            }
+            Person person = new Person(txtName.Text, txtAdress.Text, txtCpf.Text, txtPhone.Text, img());
 
             con.OpenConnection();
-            
+            //CPF can not be altered
             if(changedPic == "yes")
             {
-                sqlText = "UPDATE client SET name=@name, adress=@adress, cpf=@cpf, phone=@phone, photo=@photo WHERE id=@id";
+                sqlText = "UPDATE client SET name=@name, adress=@adress, phone=@phone, photo=@photo WHERE id=@id";
                 cmd = new MySqlCommand(sqlText, con.con);
                 cmd.Parameters.AddWithValue("@id", id);
-                cmd.Parameters.AddWithValue("@name", txtName.Text);
-                cmd.Parameters.AddWithValue("@adress", txtAdress.Text);
-                cmd.Parameters.AddWithValue("@cpf", txtCpf.Text);
-                cmd.Parameters.AddWithValue("@phone", txtPhone.Text);
-                cmd.Parameters.AddWithValue("@photo", img());
+                cmd.Parameters.AddWithValue("@name", person.Name);
+                cmd.Parameters.AddWithValue("@adress", person.Adress);
+                cmd.Parameters.AddWithValue("@phone", person.Phone);
+                cmd.Parameters.AddWithValue("@photo", person.Photo);
             }
             else if (changedPic == "no")
             {
-                sqlText = "UPDATE client SET name=@name, adress=@adress, cpf=@cpf, phone=@phone WHERE id=@id";
+                sqlText = "UPDATE client SET name=@name, adress=@adress, phone=@phone WHERE id=@id";
                 cmd = new MySqlCommand(sqlText, con.con);
                 cmd.Parameters.AddWithValue("@id", id);
-                cmd.Parameters.AddWithValue("@name", txtName.Text);
-                cmd.Parameters.AddWithValue("@adress", txtAdress.Text);
-                cmd.Parameters.AddWithValue("@cpf", txtCpf.Text);
-                cmd.Parameters.AddWithValue("@phone", txtPhone.Text);
+                cmd.Parameters.AddWithValue("@name", person.Name);
+                cmd.Parameters.AddWithValue("@adress", person.Adress);
+                cmd.Parameters.AddWithValue("@phone", person.Phone);
             }
-
-            //check if CPF exists
-            //Create a TataTable with all instances fouded identic like the input and then check if is bigger than 0
-            //if(txtCpf.Text != oldCpf)
-            //{
-            //    MySqlCommand cmdVerify = new MySqlCommand("SELECT * FROM client WHERE cpf=@cpf", con.con);
-            //    MySqlDataAdapter da = new MySqlDataAdapter();
-            //    da.SelectCommand = cmdVerify;
-            //    cmdVerify.Parameters.AddWithValue("@cpf", txtCpf.Text.Replace(',', '.'));
-            //    DataTable dt = new DataTable();
-            //    da.Fill(dt);
-            //    if (dt.Rows.Count > 0)
-            //    {
-            //        MessageBox.Show("CPF already registered", "Register", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-            //        txtCpf.Text = "";
-            //        txtCpf.Focus();
-            //        return;
-            //    }
-            //}
 
             //Update grid view
             cmd.ExecuteNonQuery();
@@ -304,6 +270,7 @@ namespace SystemProject
                 btnNew.Enabled = false;
                 btnSave.Enabled = false;
                 enableLabel();
+                txtCpf.Enabled = false;
 
                 //Casting to convert DataGridVie to String
                 id = dataGridView1.CurrentRow.Cells[0].Value.ToString();

@@ -25,3 +25,4 @@ C:\Users\RONAL\Desktop\programming\HotelProject\SystemProject\obj\Debug\SystemPr
 C:\Users\RONAL\Desktop\programming\HotelProject\SystemProject\obj\Debug\SystemPr.E81AA4A6.Up2Date
 C:\Users\RONAL\Desktop\programming\HotelProject\SystemProject\obj\Debug\SystemProject.exe
 C:\Users\RONAL\Desktop\programming\HotelProject\SystemProject\obj\Debug\SystemProject.pdb
+C:\Users\RONAL\Desktop\programming\HotelProject\SystemProject\obj\Debug\SystemProject.FrmMenu.resources

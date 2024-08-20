@@ -1,6 +1,8 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
 using System.Data;
+using System.Data.SqlClient;
+using System.Globalization;
 using System.Security.Cryptography;
 using System.Windows.Forms;
 using System.Xml;
@@ -27,7 +29,8 @@ namespace SystemProject
                 {
                     throw new ArgumentException("Name shouldn't be empty!");
                 }
-                _name = value;
+                TextInfo textInfo = CultureInfo.CurrentCulture.TextInfo;
+                _name = textInfo.ToTitleCase(value.ToLower());
             } 
         }
         public string Adress { get; set; }
@@ -68,10 +71,11 @@ namespace SystemProject
         {
             Connection con = new Connection();
             con.OpenConnection();
-            MySqlCommand cmdVerify = new MySqlCommand("SELECT * FROM client WHERE cpf=@cpf", con.con);
+            MySqlCommand cmdVerify = new MySqlCommand("SELECT * FROM client WHERE cpf=@cpf AND id<>@id", con.con);
             MySqlDataAdapter da = new MySqlDataAdapter();
             da.SelectCommand = cmdVerify;
             cmdVerify.Parameters.AddWithValue("@cpf", value);
+            cmdVerify.Parameters.AddWithValue("@id", getId(value));
             DataTable dt = new DataTable();
             da.Fill(dt);
             con.CloseConnection();
@@ -80,6 +84,28 @@ namespace SystemProject
                 return true;
             }
             return false;
+        }
+
+        private string getId(string cpf)
+        {
+            string id = "";
+            Connection con = new Connection();
+            con.OpenConnection();
+            MySqlCommand cmdVerify = new MySqlCommand("SELECT id FROM client WHERE cpf=@cpf", con.con);
+
+            //MySqlDataAdapter da = new MySqlDataAdapter();
+            //da.SelectCommand = cmdVerify;
+            cmdVerify.Parameters.AddWithValue("@cpf", cpf);
+/*            DataTable dt = new DataTable()*/;
+            //da.Fill(dt);
+            //id = da[1];
+
+            object result = cmdVerify.ExecuteScalar();
+            if (result != null){
+                id = result.ToString();
+            }
+
+            return id;
         }
     }
 }

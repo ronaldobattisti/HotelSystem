@@ -20,6 +20,7 @@ namespace SystemProject
         private void ClientMenu_Click(object sender, EventArgs e)
         {
             FrmRegister frm = new FrmRegister();
+            frm.ShowDialog();
         }
     }
 }

@@ -63,7 +63,7 @@
             // ClientMenu
             // 
             this.ClientMenu.Name = "ClientMenu";
-            this.ClientMenu.Size = new System.Drawing.Size(180, 22);
+            this.ClientMenu.Size = new System.Drawing.Size(105, 22);
             this.ClientMenu.Text = "Client";
             this.ClientMenu.Click += new System.EventHandler(this.ClientMenu_Click);
             // 

@@ -7,12 +7,8 @@
       "RelativeMoniker": "D:0:0:{53B6B389-00B4-4E80-AA0C-9A7DFD6A23B2}|SystemProject.csproj|solutionrelative:frmmenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{53B6B389-00B4-4E80-AA0C-9A7DFD6A23B2}|SystemProject.csproj|c:\\users\\ronal\\desktop\\programming\\hotelproject\\systemproject\\frmregister.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{53B6B389-00B4-4E80-AA0C-9A7DFD6A23B2}|SystemProject.csproj|C:\\Users\\RONAL\\Desktop\\programming\\HotelProject\\SystemProject\\frmregister.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{53B6B389-00B4-4E80-AA0C-9A7DFD6A23B2}|SystemProject.csproj|solutionrelative:frmregister.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{53B6B389-00B4-4E80-AA0C-9A7DFD6A23B2}|SystemProject.csproj|c:\\users\\ronal\\desktop\\programming\\hotelproject\\systemproject\\obj\\release\\.netframework,version=v4.7.2.assemblyattributes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{53B6B389-00B4-4E80-AA0C-9A7DFD6A23B2}|SystemProject.csproj|solutionrelative:obj\\release\\.netframework,version=v4.7.2.assemblyattributes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,21 +18,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 232,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 1,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": ".NETFramework,Version=v4.7.2.AssemblyAttributes.cs",
-              "DocumentMoniker": "C:\\Users\\RONAL\\Desktop\\programming\\HotelProject\\SystemProject\\obj\\Release\\.NETFramework,Version=v4.7.2.AssemblyAttributes.cs",
-              "RelativeDocumentMoniker": "obj\\Release\\.NETFramework,Version=v4.7.2.AssemblyAttributes.cs",
-              "ToolTip": "C:\\Users\\RONAL\\Desktop\\programming\\HotelProject\\SystemProject\\obj\\Release\\.NETFramework,Version=v4.7.2.AssemblyAttributes.cs",
-              "RelativeToolTip": "obj\\Release\\.NETFramework,Version=v4.7.2.AssemblyAttributes.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-31T15:57:18.023Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Document",
               "DocumentIndex": 1,
@@ -45,10 +28,9 @@
               "RelativeDocumentMoniker": "FrmRegister.cs",
               "ToolTip": "C:\\Users\\RONAL\\Desktop\\programming\\HotelProject\\SystemProject\\FrmRegister.cs",
               "RelativeToolTip": "FrmRegister.cs",
-              "ViewState": "AQIAAD4AAAAAAAAAAAAwwCYAAAAMAAAA",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAABsAAAAeAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-31T15:51:46.449Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-31T15:51:46.449Z"
             },
             {
               "$type": "Document",
@@ -58,7 +40,7 @@
               "RelativeDocumentMoniker": "FrmMenu.cs",
               "ToolTip": "C:\\Users\\RONAL\\Desktop\\programming\\HotelProject\\SystemProject\\FrmMenu.cs",
               "RelativeToolTip": "FrmMenu.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAaAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABQAAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-08-20T01:22:08.848Z",
               "EditorCaption": ""

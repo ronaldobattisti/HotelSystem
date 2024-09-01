@@ -1,6 +1,6 @@
 ﻿namespace SystemProject
 {
-    partial class MainFrm
+    partial class FrmRegister
     {
         /// <summary>
         /// Required designer variable.
@@ -240,7 +240,7 @@
             this.image.TabIndex = 19;
             this.image.TabStop = false;
             // 
-            // MainFrm
+            // FrmRegister
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -266,9 +266,9 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lblAdress);
             this.Controls.Add(this.lblName);
-            this.Name = "MainFrm";
+            this.Name = "FrmRegister";
             this.Text = "Main";
-            this.Load += new System.EventHandler(this.MainFrm_Load_1);
+            this.Load += new System.EventHandler(this.FrmRegister_Load_1);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.image)).EndInit();
             this.ResumeLayout(false);

@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 namespace SystemProject
 {
-    public partial class MainFrm : Form
+    public partial class FrmRegister : Form
     {
         #region Connect and disconnect from DB
         //Instanciating Connection class
@@ -19,14 +19,14 @@ namespace SystemProject
 
         string changedPic = "no";
 
-        public MainFrm()
+        public FrmRegister()
         {
             InitializeComponent();
         }
         #endregion
 
         #region Initialization
-        private void MainFrm_Load_1(object sender, EventArgs e)
+        private void FrmRegister_Load_1(object sender, EventArgs e)
         {
             clearImage();
             ListGrid();

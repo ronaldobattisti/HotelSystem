@@ -14,8 +14,7 @@ namespace SystemProject
         //By convention, private components starts with _
         private string _name;
         private string _cpf;
-        private string _sqlText;
-        MySqlCommand _cmd;
+        //MySqlCommand _cmd;
         public int Id {  get; }
         //check if name is valid, ie if it is not null
         public string Name 

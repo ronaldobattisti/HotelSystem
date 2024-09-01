@@ -90,7 +90,7 @@
       <DependentUpon>FrmRegister.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="obj\Debug\SystemProject.FrmMenu.resources" />
-    <EmbeddedResource Include="obj\Debug\SystemProject.MainFrm.resources" />
+    <EmbeddedResource Include="obj\Debug\SystemProject.FrmRegister.resources" />
     <EmbeddedResource Include="obj\Debug\SystemProject.Properties.Resources.resources" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

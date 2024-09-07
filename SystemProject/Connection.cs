@@ -11,7 +11,8 @@ namespace SystemProject
     internal class Connection
     {
         //Connection parameters to acess local server
-        public string connec = "SERVER=localhost; DATABASE=class; UID=root; PwD=; PORT=;";
+        //Estava verificando que o usuário que consta no erro está configurando dentro do banco de dados, é necessário depurar seu banco e buscar o local onde este usuário está configurado e alterar para os dados que adicionou no cPanel e no seu código. Por nosso suporte ser limitado apenas ao ambiente de hospedagem não conseguiramos lhe auxiliar nesta ação, por isso indicamos a depurar ou caso não possua os conhecimentos, o apoio de um profissional em desenvolvimento
+        public string connec = "SERVER=ns905.hostgator.com.br; DATABASE=ronal657_hotelSystem; UID=ronal657_rbattisti; PWD=Ronaldo@02; PORT=3306;";
 
         public MySqlConnection con = null;
 

@@ -26,3 +26,4 @@ C:\Users\RONAL\Desktop\programming\HotelProject\SystemProject\bin\Debug\MySql.Da
 C:\Users\RONAL\Desktop\programming\HotelProject\SystemProject\obj\Debug\SystemPr.E81AA4A6.Up2Date
 C:\Users\RONAL\Desktop\programming\HotelProject\SystemProject\obj\Debug\SystemProject.exe
 C:\Users\RONAL\Desktop\programming\HotelProject\SystemProject\obj\Debug\SystemProject.pdb
+C:\Users\RONAL\Desktop\programming\HotelProject\SystemProject\obj\Debug\SystemProject.FrmLogin.resources

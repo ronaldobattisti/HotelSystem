@@ -59,7 +59,7 @@
             this.txtName.Location = new System.Drawing.Point(138, 42);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(266, 20);
-            this.txtName.TabIndex = 1;
+            this.txtName.TabIndex = 0;
             // 
             // txtPassword
             // 
@@ -84,7 +84,7 @@
             this.btnCancel.Location = new System.Drawing.Point(157, 153);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
-            this.btnCancel.TabIndex = 2;
+            this.btnCancel.TabIndex = 3;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);

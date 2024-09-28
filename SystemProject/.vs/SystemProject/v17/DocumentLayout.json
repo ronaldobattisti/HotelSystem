@@ -1,12 +1,170 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\RONAL\\Desktop\\programming\\HotelProject\\SystemProject\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{53B6B389-00B4-4E80-AA0C-9A7DFD6A23B2}|SystemProject.csproj|c:\\users\\ronal\\desktop\\programming\\hotelproject\\systemproject\\frmregister.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{53B6B389-00B4-4E80-AA0C-9A7DFD6A23B2}|SystemProject.csproj|solutionrelative:frmregister.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{53B6B389-00B4-4E80-AA0C-9A7DFD6A23B2}|SystemProject.csproj|c:\\users\\ronal\\desktop\\programming\\hotelproject\\systemproject\\frmregister.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{53B6B389-00B4-4E80-AA0C-9A7DFD6A23B2}|SystemProject.csproj|solutionrelative:frmregister.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{53B6B389-00B4-4E80-AA0C-9A7DFD6A23B2}|SystemProject.csproj|c:\\users\\ronal\\desktop\\programming\\hotelproject\\systemproject\\frmlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{53B6B389-00B4-4E80-AA0C-9A7DFD6A23B2}|SystemProject.csproj|solutionrelative:frmlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{53B6B389-00B4-4E80-AA0C-9A7DFD6A23B2}|SystemProject.csproj|c:\\users\\ronal\\desktop\\programming\\hotelproject\\systemproject\\frmlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{53B6B389-00B4-4E80-AA0C-9A7DFD6A23B2}|SystemProject.csproj|solutionrelative:frmlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{53B6B389-00B4-4E80-AA0C-9A7DFD6A23B2}|SystemProject.csproj|c:\\users\\ronal\\desktop\\programming\\hotelproject\\systemproject\\frmmenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{53B6B389-00B4-4E80-AA0C-9A7DFD6A23B2}|SystemProject.csproj|solutionrelative:frmmenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{53B6B389-00B4-4E80-AA0C-9A7DFD6A23B2}|SystemProject.csproj|c:\\users\\ronal\\desktop\\programming\\hotelproject\\systemproject\\frmmenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{53B6B389-00B4-4E80-AA0C-9A7DFD6A23B2}|SystemProject.csproj|solutionrelative:frmmenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{53B6B389-00B4-4E80-AA0C-9A7DFD6A23B2}|SystemProject.csproj|c:\\users\\ronal\\desktop\\programming\\hotelproject\\systemproject\\models.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{53B6B389-00B4-4E80-AA0C-9A7DFD6A23B2}|SystemProject.csproj|solutionrelative:models.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{53B6B389-00B4-4E80-AA0C-9A7DFD6A23B2}|SystemProject.csproj|c:\\users\\ronal\\desktop\\programming\\hotelproject\\systemproject\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{53B6B389-00B4-4E80-AA0C-9A7DFD6A23B2}|SystemProject.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{53B6B389-00B4-4E80-AA0C-9A7DFD6A23B2}|SystemProject.csproj|c:\\users\\ronal\\desktop\\programming\\hotelproject\\systemproject\\connection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{53B6B389-00B4-4E80-AA0C-9A7DFD6A23B2}|SystemProject.csproj|solutionrelative:connection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 232,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "FrmRegister.cs",
+              "DocumentMoniker": "C:\\Users\\RONAL\\Desktop\\programming\\HotelProject\\SystemProject\\FrmRegister.cs",
+              "RelativeDocumentMoniker": "FrmRegister.cs",
+              "ToolTip": "C:\\Users\\RONAL\\Desktop\\programming\\HotelProject\\SystemProject\\FrmRegister.cs",
+              "RelativeToolTip": "FrmRegister.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAATAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-28T01:34:13.154Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "FrmLogin.cs",
+              "DocumentMoniker": "C:\\Users\\RONAL\\Desktop\\programming\\HotelProject\\SystemProject\\FrmLogin.cs",
+              "RelativeDocumentMoniker": "FrmLogin.cs",
+              "ToolTip": "C:\\Users\\RONAL\\Desktop\\programming\\HotelProject\\SystemProject\\FrmLogin.cs",
+              "RelativeToolTip": "FrmLogin.cs",
+              "ViewState": "AQIAAAQAAAAAAAAAAAAvwEYAAAANAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-28T01:33:51.496Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "FrmMenu.cs",
+              "DocumentMoniker": "C:\\Users\\RONAL\\Desktop\\programming\\HotelProject\\SystemProject\\FrmMenu.cs",
+              "RelativeDocumentMoniker": "FrmMenu.cs",
+              "ToolTip": "C:\\Users\\RONAL\\Desktop\\programming\\HotelProject\\SystemProject\\FrmMenu.cs",
+              "RelativeToolTip": "FrmMenu.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABsAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-28T01:33:29.524Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "FrmMenu.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\RONAL\\Desktop\\programming\\HotelProject\\SystemProject\\FrmMenu.cs",
+              "RelativeDocumentMoniker": "FrmMenu.cs",
+              "ToolTip": "C:\\Users\\RONAL\\Desktop\\programming\\HotelProject\\SystemProject\\FrmMenu.cs [Design]",
+              "RelativeToolTip": "FrmMenu.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-28T01:33:05.111Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Models.cs",
+              "DocumentMoniker": "C:\\Users\\RONAL\\Desktop\\programming\\HotelProject\\SystemProject\\Models.cs",
+              "RelativeDocumentMoniker": "Models.cs",
+              "ToolTip": "C:\\Users\\RONAL\\Desktop\\programming\\HotelProject\\SystemProject\\Models.cs",
+              "RelativeToolTip": "Models.cs",
+              "ViewState": "AQIAADsAAAAAAAAAAAA8wAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-28T01:32:52.009Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\RONAL\\Desktop\\programming\\HotelProject\\SystemProject\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Users\\RONAL\\Desktop\\programming\\HotelProject\\SystemProject\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-28T01:32:49.686Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Connection.cs",
+              "DocumentMoniker": "C:\\Users\\RONAL\\Desktop\\programming\\HotelProject\\SystemProject\\Connection.cs",
+              "RelativeDocumentMoniker": "Connection.cs",
+              "ToolTip": "C:\\Users\\RONAL\\Desktop\\programming\\HotelProject\\SystemProject\\Connection.cs",
+              "RelativeToolTip": "Connection.cs",
+              "ViewState": "AQIAADEAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-28T01:32:43.845Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "FrmRegister.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\RONAL\\Desktop\\programming\\HotelProject\\SystemProject\\FrmRegister.cs",
+              "RelativeDocumentMoniker": "FrmRegister.cs",
+              "ToolTip": "C:\\Users\\RONAL\\Desktop\\programming\\HotelProject\\SystemProject\\FrmRegister.cs [Design]",
+              "RelativeToolTip": "FrmRegister.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-28T00:42:17.813Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "FrmLogin.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\RONAL\\Desktop\\programming\\HotelProject\\SystemProject\\FrmLogin.cs",
+              "RelativeDocumentMoniker": "FrmLogin.cs",
+              "ToolTip": "C:\\Users\\RONAL\\Desktop\\programming\\HotelProject\\SystemProject\\FrmLogin.cs [Design]",
+              "RelativeToolTip": "FrmLogin.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-28T00:11:40.057Z",
+              "EditorCaption": " [Design]"
+            }
+          ]
+        }
+      ]
     }
   ]
 }

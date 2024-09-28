@@ -22,5 +22,10 @@ namespace SystemProject
             FrmRegister frm = new FrmRegister();
             frm.ShowDialog();
         }
+
+        private void FrmMenu_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
